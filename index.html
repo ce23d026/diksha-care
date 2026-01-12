@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Diksha ❤️</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fdecef;
+      text-align: center;
+      padding: 40px;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 420px;
+      margin: auto;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #ff6f91;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    select {
+      padding: 6px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="card">
+  <h2>💌 A Message for You</h2>
+  <p id="message"></p>
+
+  <h3>😊 How are you feeling today?</h3>
+  <select id="mood">
+    <option>Happy</option>
+    <option>Okay</option>
+    <option>Low</option>
+  </select>
+
+  <h3>🦶 Pain today?</h3>
+  <select id="pain">
+    <option>Better</option>
+    <option>Same</option>
+    <option>Worse</option>
+  </select>
+
+  <br><br>
+  <button onclick="send()">Send 💖</button>
+
+  <p id="response"></p>
+</div>
+
+<script>
+  const messages = [
+    "You are healing every day 🌱",
+    "I am proud of you ❤️",
+    "This pain is temporary, my love 💕",
+    "You are never alone 🌍",
+    "Rest today, rise stronger tomorrow 🌸"
+  ];
+
+  document.getElementById("message").innerText =
+    messages[Math.floor(Math.random() * messages.length)];
+
+  function send() {
+    const mood = document.getElementById("mood").value;
+    const pain = document.getElementById("pain").value;
+
+    document.getElementById("response").innerHTML =
+      `<br>🌷 Thank you for sharing.<br>
+       <b>Mood:</b> ${mood}<br>
+       <b>Pain:</b> ${pain}<br>
+       I am always with you ❤️`;
+  }
+</script>
+</body>
+</html>
 
