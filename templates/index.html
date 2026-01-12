@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Diksha ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fdecef;
+            text-align: center;
+            padding: 40px;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 420px;
+            margin: auto;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #ff6f91;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        select {
+            padding: 6px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="card">
+    <h2>💌 A Message for You</h2>
+    <p>{{ message }}</p>
+
+    <form method="POST">
+        <h3>😊 How are you feeling today?</h3>
+        <select name="mood">
+            <option>Happy</option>
+            <option>Okay</option>
+            <option>Low</option>
+        </select>
+
+        <h3>🦶 Pain today?</h3>
+        <select name="pain">
+            <option>Better</option>
+            <option>Same</option>
+            <option>Worse</option>
+        </select>
+
+        <br><br>
+        <button type="submit">Send 💖</button>
+    </form>
+
+    {% if mood %}
+        <p><strong>Your mood:</strong> {{ mood }}</p>
+        <p><strong>Pain status:</strong> {{ pain }}</p>
+        <p>🌷 Thank you for sharing. I am always with you.</p>
+    {% endif %}
+</div>
+</body>
+</html>
