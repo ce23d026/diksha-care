@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>For Diksha ❤️</title>
   <meta charset="UTF-8">
+  <title>For Diksha ❤️</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -10,35 +11,72 @@
       text-align: center;
       padding: 40px;
     }
+
     .card {
       background: white;
       padding: 25px;
       border-radius: 15px;
-      max-width: 420px;
+      max-width: 450px;
       margin: auto;
       box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
     }
+
+    h2, h3 {
+      color: #333;
+    }
+
     button {
-      padding: 10px 20px;
+      padding: 10px 18px;
+      margin: 5px;
       border: none;
       border-radius: 8px;
       background: #ff6f91;
       color: white;
-      font-size: 16px;
+      font-size: 15px;
       cursor: pointer;
     }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
     select {
       padding: 6px;
       border-radius: 6px;
+      margin-top: 5px;
+    }
+
+    .med {
+      margin-top: 18px;
+    }
+
+    hr {
+      margin: 30px 0;
+    }
+
+    .green {
+      color: green;
+      font-weight: bold;
+    }
+
+    .orange {
+      color: orange;
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body>
+
 <div class="card">
+
+  <!-- 💌 Message -->
   <h2>💌 A Message for You</h2>
   <p id="message"></p>
 
+  <hr>
+
+  <!-- 😊 Mood & Pain -->
   <h3>😊 How are you feeling today?</h3>
   <select id="mood">
     <option>Happy</option>
@@ -54,12 +92,41 @@
   </select>
 
   <br><br>
-  <button onclick="send()">Send 💖</button>
+  <button onclick="sendStatus()">Send 💖</button>
 
-  <p id="response"></p>
+  <p id="status-response"></p>
+
+  <hr>
+
+  <!-- 💊 Medicine Section -->
+  <h2>💊 Medicine Check</h2>
+  <p>Did you take your medicines today?</p>
+
+  <div class="med">
+    <h3>☀️ Morning</h3>
+    <button onclick="medCheck('morning', true)">Yes ✅</button>
+    <button onclick="medCheck('morning', false)">Not yet ⏳</button>
+    <p id="morning-msg"></p>
+  </div>
+
+  <div class="med">
+    <h3>🌤️ Afternoon</h3>
+    <button onclick="medCheck('afternoon', true)">Yes ✅</button>
+    <button onclick="medCheck('afternoon', false)">Not yet ⏳</button>
+    <p id="afternoon-msg"></p>
+  </div>
+
+  <div class="med">
+    <h3>🌙 Night</h3>
+    <button onclick="medCheck('night', true)">Yes ✅</button>
+    <button onclick="medCheck('night', false)">Not yet ⏳</button>
+    <p id="night-msg"></p>
+  </div>
+
 </div>
 
 <script>
+  // 💌 Daily messages
   const messages = [
     "You are healing every day 🌱",
     "I am proud of you ❤️",
@@ -71,17 +138,33 @@
   document.getElementById("message").innerText =
     messages[Math.floor(Math.random() * messages.length)];
 
-  function send() {
+  // 😊 Mood & Pain response
+  function sendStatus() {
     const mood = document.getElementById("mood").value;
     const pain = document.getElementById("pain").value;
 
-    document.getElementById("response").innerHTML =
+    document.getElementById("status-response").innerHTML =
       `<br>🌷 Thank you for sharing.<br>
        <b>Mood:</b> ${mood}<br>
        <b>Pain:</b> ${pain}<br>
        I am always with you ❤️`;
   }
-</script>
-</body>
-</html>
 
+  // 💊 Medicine check
+  function medCheck(time, taken) {
+    const msg = document.getElementById(time + "-msg");
+
+    if (taken) {
+      msg.innerHTML = "💚 Good job! I'm proud of you for taking care of yourself.";
+      msg.className = "green";
+      localStorage.setItem(time + "-med", "taken");
+    } else {
+      msg.innerHTML = "💛 It's okay. Please take it when you can.";
+      msg.className = "orange";
+    }
+  }
+
+  // 🔁 Restore medicine state
+  ["morning", "afternoon", "night"].forEach(time => {
+    if (localStorage.getItem(time + "-med") === "taken") {
+      const msg = document.getElementByI
